@@ -30,4 +30,13 @@ id SERIAL PRIMARY KEY,
 number BIGINT UNIQUE NOT NULL,
 type TEXT DEFAULT 'landline');
 
+-- Creating table customerAddress
 
+CREATE TABLE "customerAddress" (
+id SERIAL PRIMARY KEY,
+"customerId" INTEGER REFERENCES "customers"("id") NOT NULL,
+street TEXT NOT NULL,
+number INTEGER NOT NULL,
+complement TEXT DEFAULT '',
+"postalCode" BIGINT NOT NULL,
+dataPractice "cityId" INTEGER REFERENCES "cities"("id") NOT NULL);
