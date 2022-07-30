@@ -22,3 +22,12 @@ cpf BIGINT UNIQUE NOT NULL,
 email TEXT UNIQUE NOT NULL,
 password TEXT NOT NULL);
 
+-- Creating table customerPhones;
+
+CREATE TABLE "customerPhones" (
+id SERIAL PRIMARY KEY, 
+"customerId" INTEGER REFERENCES "customers"("id") NOT NULL,
+number BIGINT UNIQUE NOT NULL,
+type TEXT DEFAULT 'landline');
+
+
