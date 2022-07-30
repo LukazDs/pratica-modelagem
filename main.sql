@@ -24,11 +24,13 @@ password TEXT NOT NULL);
 
 -- Creating table customerPhones
 
+CREATE TYPE "phoneType" AS ENUM ('landline', 'mobile');
+
 CREATE TABLE "customerPhones" (
 id SERIAL NOT NULL PRIMARY KEY, 
 "customerId" INTEGER REFERENCES "customers"("id") NOT NULL,
 number BIGINT UNIQUE NOT NULL,
-type TEXT DEFAULT 'landline');
+type "phoneType" NOT NULL);
 
 -- Creating table customerAddress
 
@@ -53,11 +55,13 @@ agency BIGINT NOT NULL,
 
 -- Creating table transactions
 
+CREATE TYPE "transactionType" AS ENUM ('deposit', 'withdraw');
+
 CREATE TABLE transactions (
 id SERIAL NOT NULL PRIMARY KEY,
 "bankAccountId" INTEGER REFERENCES "bankAccount"("id") NOT NULL,
 amount INTEGER NOT NULL,
-type TEXT DEFAULT 'deposit' NOT NULL,
+type "transactionType" NOT NULL,
 time TIMESTAMP NOT NULL,
 description TEXT NOT NULL,
 cancelled BOOLEAN NOT NULL );
