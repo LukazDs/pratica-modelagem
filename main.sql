@@ -40,3 +40,14 @@ number INTEGER NOT NULL,
 complement TEXT DEFAULT '',
 "postalCode" BIGINT NOT NULL,
 dataPractice "cityId" INTEGER REFERENCES "cities"("id") NOT NULL);
+
+-- Creating table bankAccount
+
+CREATE TABLE "bankAccount" (
+id SERIAL PRIMARY KEY,
+"customerId" INTEGER REFERENCES "customers"("id") NOT NULL,
+"accountNumber" BIGINT UNIQUE NOT NULL,
+agency BIGINT NOT NULL,
+"openDate" DATE NOT NULL,
+"closeDate" DATE NOT NULL);
+
