@@ -61,3 +61,14 @@ type TEXT DEFAULT 'deposit' NOT NULL,
 time TIMESTAMP NOT NULL,
 description TEXT NOT NULL,
 cancelled BOOLEAN NOT NULL );
+
+-- Creating table creditCards
+
+CREATE TABLE "creditCards" (
+id SERIAL PRIMARY KEY,
+"bankAccountId" INTEGER REFERENCES "bankAccount"("id") NOT NULL,
+name VARCHAR(140) UNIQUE NOT NULL,
+number BIGINT NOT NULL, "securityCode" BIGINT NOT NULL,
+"expirationMonth" TEXT NOT NULL, "expirationYear" INTEGER NOT NULL,
+password TEXT NOT NULL, "limit" INTEGER NOT NULL);
+
